@@ -1,6 +1,4 @@
-import argparse
 import math
-import sys
 from pathlib import Path
 import torch
 import torch.nn.functional as F
@@ -10,6 +8,7 @@ from .model_utils import expand_qwen_image_component_path, resolve_torch_dtype, 
 from .bridge import build_sd3_bridge
 from .qwen import QwenPipeline
 from .prompt_cache import load_prompt_embedding_cache, single_prompt
+from .cli import parse_training_args
 VELOCITY_DOMAINS = ('sd3', 'qwen')
 
 class SD3VelocityLAE(LightningModelForT2ILoRA):
@@ -119,55 +118,23 @@ class SD3VelocityLAE(LightningModelForT2ILoRA):
         checkpoint.clear()
         checkpoint.update({f'shared_latent_bridge.{name}': value for (name, value) in self.bridge.state_dict().items()})
 
-def velocity_parse_args():
-    parser = argparse.ArgumentParser(description='Joint SD3/Qwen shared bridge and one-step velocity alignment')
-    parser.add_argument('--qwen_path', required=True)
-    parser.add_argument('--sd3_path', required=True)
-    parser.add_argument('--prompt_embedding_dir', required=True)
-    parser.add_argument('--sampling_steps', type=int, default=50)
-    parser.add_argument('--exponential_shift_mu', type=float, default=math.log(3.0))
-    parser.add_argument('--timesteps_per_batch', type=int, default=1)
-    parser.add_argument('--shared_channels', type=int, default=32)
-    parser.add_argument('--hidden_channels', type=int, default=64)
-    parser.add_argument('--bridge_num_res_blocks', type=int, default=3)
-    parser.add_argument('--bridge_sigma_embedding_dim', type=int, default=128)
-    parser.add_argument('--reconstruction_weight', type=float, default=1.0)
-    parser.add_argument('--cross_reconstruction_weight', type=float, default=1.0)
-    parser.add_argument('--alignment_weight', type=float, default=0.1)
-    parser.add_argument('--velocity_weight', type=float, default=0.05)
-    parser.add_argument('--shared_norm_weight', type=float, default=0.0001)
-    parser.add_argument('--sd3_t5_sequence_length', type=int, default=512)
-    return add_general_parsers(parser).parse_args()
+def velocity_parse_args(argv=None):
+    return parse_training_args('lae', add_general_parsers, argv)
 
-def run_velocity(prepare_cache=False):
-    args = velocity_parse_args()
+
+def run_velocity(argv=None):
+    args = velocity_parse_args(argv)
     if not math.isfinite(args.velocity_weight) or args.velocity_weight <= 0:
         raise ValueError('LAE requires velocity_weight > 0')
-    if prepare_cache:
+    if args.prepare_prompt_cache:
         from .prompt_cache import prepare_prompt_cache
-        prepare_prompt_cache(args.dataset_path, args.prompt_embedding_dir, args.qwen_path, args.sd3_path, precision=args.precision, t5_length=getattr(args, 'sd3_t5_sequence_length', 512))
+        prepare_prompt_cache(args.dataset_path, args.prompt_embedding_dir, args.qwen_path, args.sd3_path, precision=args.precision, t5_length=args.sd3_t5_sequence_length)
     model = SD3VelocityLAE(torch_dtype=resolve_torch_dtype(args.precision), qwen_path=args.qwen_path, sd3_path=args.sd3_path, prompt_embedding_dir=args.prompt_embedding_dir, learning_rate=args.learning_rate, sampling_steps=args.sampling_steps, exponential_shift_mu=args.exponential_shift_mu, timesteps_per_batch=args.timesteps_per_batch, shared_channels=args.shared_channels, hidden_channels=args.hidden_channels, bridge_num_res_blocks=args.bridge_num_res_blocks, bridge_sigma_embedding_dim=args.bridge_sigma_embedding_dim, reconstruction_weight=args.reconstruction_weight, cross_reconstruction_weight=args.cross_reconstruction_weight, alignment_weight=args.alignment_weight, velocity_weight=args.velocity_weight, shared_norm_weight=args.shared_norm_weight, sd3_t5_sequence_length=args.sd3_t5_sequence_length)
     launch_training_task(model, args)
 
-def main():
-    frontend = argparse.ArgumentParser(add_help=False, description='Train an SD3/Qwen LAE with joint state and velocity alignment.')
-    frontend.add_argument('--model', '--experiment', dest='model', choices=('sd3-qwen',), default='sd3-qwen')
-    frontend.add_argument('--prepare-prompt-cache', action='store_true')
-    frontend.add_argument('--list-models', action='store_true')
-    (args, forwarded) = frontend.parse_known_args()
-    if args.list_models:
-        print('sd3-qwen')
-        return
-    if forwarded and forwarded[0] == '--':
-        forwarded = forwarded[1:]
-    if '--help' in forwarded or '-h' in forwarded:
-        frontend.print_help()
-    defaults = {'--learning_rate': '1e-4', '--velocity_weight': '0.05'}
-    supplied = {flag.split('=', 1)[0] for flag in forwarded if flag.startswith('--')}
-    for (flag, value) in defaults.items():
-        if flag not in supplied:
-            forwarded += [flag, value]
-    sys.argv = [sys.argv[0], *forwarded]
-    run_velocity(args.prepare_prompt_cache)
+def main(argv=None):
+    run_velocity(argv)
+
+
 if __name__ == '__main__':
     main()

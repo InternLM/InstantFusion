@@ -14,3 +14,6 @@ prompt_cache/
 *.jpg
 *.jpeg
 *.webp
+!fig/method.png
+!fig/reconstruct.png
+!fig/trans.png

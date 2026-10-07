@@ -1,6 +1,4 @@
-import argparse
 import csv
-import sys
 from contextlib import contextmanager
 from pathlib import Path
 import torch
@@ -9,6 +7,7 @@ from lightning.pytorch.callbacks import ModelCheckpoint
 from peft.tuners.tuners_utils import BaseTunerLayer
 from diffsynth.trainers.text_to_image import LightningModelForT2ILoRA, add_general_parsers, launch_training_task
 from .model_utils import SD3QwenBackbones, resolve_torch_dtype
+from .cli import parse_training_args
 
 class LossCurve:
 
@@ -81,15 +80,6 @@ def sample_supervised_steps(num_steps, count, device):
     if distributed:
         torch.distributed.broadcast(step_ids, src=0)
     return step_ids.sort().values.tolist()
-
-def parse_supervised_step_ids(value):
-    parts = [part.strip() for part in value.split(',')]
-    if not parts or any((not part for part in parts)):
-        raise argparse.ArgumentTypeError('--supervised_step_ids must be a comma-separated list of integers')
-    try:
-        return tuple((int(part) for part in parts))
-    except ValueError as exc:
-        raise argparse.ArgumentTypeError('--supervised_step_ids must be a comma-separated list of integers') from exc
 
 def validate_supervised_step_ids(num_steps, step_ids):
     step_ids = tuple(step_ids)
@@ -259,49 +249,20 @@ class SD3OPD(LightningModelForT2ILoRA):
         checkpoint.clear()
         checkpoint.update({name: value for (name, value) in self.backbones.sd3_dit.state_dict().items() if name in trainable})
 
-def parse_args():
-    parser = argparse.ArgumentParser(description='Distill Qwen into SD3 at selected steps with a frozen SD3 reference')
-    parser.add_argument('--qwen_path', required=True)
-    parser.add_argument('--sd3_path', required=True)
-    parser.add_argument('--prompt_embedding_dir', required=True)
-    parser.add_argument('--bridge_checkpoint', required=True)
-    parser.add_argument('--sampling_steps', type=int, default=20)
-    step_group = parser.add_mutually_exclusive_group()
-    step_group.add_argument('--supervised_steps_per_image', type=int, default=1)
-    step_group.add_argument('--supervised_step_ids', type=parse_supervised_step_ids, help='Fixed zero-based scheduler step IDs, for example: 1,2,4,8')
-    parser.add_argument('--checkpoint_every_n_train_steps', type=int, default=DEFAULT_CHECKPOINT_EVERY_N_TRAIN_STEPS)
-    parser.add_argument('--reference_weight', type=float, default=0.1)
-    return add_general_parsers(parser).parse_args()
+def parse_args(argv=None):
+    return parse_training_args('opd', add_general_parsers, argv)
 
-def run_opd(prepare_cache=False):
-    args = parse_args()
-    if prepare_cache:
+
+def run_opd(argv=None):
+    args = parse_args(argv)
+    if args.prepare_prompt_cache:
         from .prompt_cache import prepare_prompt_cache
         prepare_prompt_cache(args.dataset_path, args.prompt_embedding_dir, args.qwen_path, args.sd3_path, precision=args.precision)
     model = SD3OPD(torch_dtype=resolve_torch_dtype(args.precision), qwen_path=args.qwen_path, sd3_path=args.sd3_path, prompt_embedding_dir=args.prompt_embedding_dir, bridge_checkpoint=args.bridge_checkpoint, height=args.height, width=args.width, learning_rate=args.learning_rate, sampling_steps=args.sampling_steps, supervised_steps_per_image=args.supervised_steps_per_image, supervised_step_ids=args.supervised_step_ids, checkpoint_every_n_train_steps=args.checkpoint_every_n_train_steps, reference_weight=args.reference_weight, use_gradient_checkpointing=args.use_gradient_checkpointing, lora_rank=args.lora_rank, lora_alpha=args.lora_alpha, lora_target_modules=LORA_TARGET_MODULES, init_lora_weights=args.init_lora_weights, pretrained_lora_path=args.pretrained_lora_path)
     launch_training_task(model, args)
 
-def main():
-    frontend = argparse.ArgumentParser(add_help=False, description="SD3-only OPD, frozen Qwen teacher and LAE.")
-    frontend.add_argument("--prepare-prompt-cache", action="store_true")
-    frontend.add_argument("--experiment", choices=("sd3-qwen",), default="sd3-qwen")
-    args, forwarded = frontend.parse_known_args()
-    if forwarded and forwarded[0] == "--":
-        forwarded = forwarded[1:]
-    if "--help" in forwarded or "-h" in forwarded:
-        frontend.print_help()
-    defaults = {"--sampling_steps": "20", "--supervised_step_ids": "1,2,4,8",
-                "--lora_rank": "64", "--lora_alpha": "64", "--learning_rate": "1e-5",
-                "--reference_weight": "0.1", "--init_lora_weights": "kaiming",
-                "--accumulate_grad_batches": "2"}
-    supplied = {flag.split("=", 1)[0] for flag in forwarded if flag.startswith("--")}
-    if "--supervised_steps_per_image" in supplied:
-        defaults.pop("--supervised_step_ids")
-    for flag, value in defaults.items():
-        if flag not in supplied:
-            forwarded += [flag, value]
-    sys.argv = [sys.argv[0], *forwarded]
-    run_opd(args.prepare_prompt_cache)
+def main(argv=None):
+    run_opd(argv)
 
 
 if __name__ == "__main__":
