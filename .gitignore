@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+outputs/
+checkpoints/
+prompt_cache/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.png
+*.jpg
+*.jpeg
+*.webp

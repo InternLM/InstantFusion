@@ -1,0 +1,17 @@
+torch>=2.2
+torchvision
+lightning>=2.2
+peft>=0.12
+diffusers>=0.36.0.dev0
+transformers>=4.52
+accelerate>=1.12
+safetensors
+einops
+numpy
+pandas
+Pillow
+tqdm
+modelscope
+deepspeed>=0.19
+sentencepiece
+packaging
