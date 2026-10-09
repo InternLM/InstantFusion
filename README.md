@@ -11,7 +11,6 @@
   <img src="https://img.shields.io/badge/Paper-Coming%20soon-9E9E9E?style=flat-square" alt="Paper coming soon">
   <a href="https://internlm.github.io/InstantFusion/"><img src="https://img.shields.io/badge/Project%20Page-GitHub%20Pages-2441DD?style=flat-square" alt="InstantFusion project page"></a>
   <a href="https://huggingface.co/XuanlangDai/InstantFusion"><img src="https://img.shields.io/badge/Model-Hugging%20Face-2441DD?style=flat-square&logo=huggingface" alt="Model checkpoints on Hugging Face"></a>
-  <img src="https://img.shields.io/badge/Dataset-Coming%20soon-9E9E9E?style=flat-square" alt="Dataset coming soon">
 </p>
 
 <p align="center">
