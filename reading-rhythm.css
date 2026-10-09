@@ -1,0 +1,82 @@
+/* Compact chapter spacing; preserve the separate hero composition. */
+.section{padding-top:28px;padding-bottom:36px}
+.section-meta{margin-bottom:24px;padding-top:14px;font-size:12px;letter-spacing:.06em}
+.section-meta>span:last-child{font-size:11px}
+.section-meta b{margin-right:12px}
+.application-jump{margin:0 0 24px;gap:24px;font-size:13px}
+.application-jump a{padding-bottom:6px}
+.study-heading{margin-bottom:28px}
+.study-copy{margin-bottom:22px}
+.validation-study{margin-top:30px;padding-top:24px}
+.study-figure{margin-top:24px}
+.study-figure figcaption{margin-top:10px}
+.study-metrics{margin:26px 0}
+.quality-comparison{margin:28px 0 0}
+.quality-footnote{margin-top:13px}
+.quality-pair caption{font-size:34px;padding:11px 0 18px}
+.quality-pair caption span{font-size:27px}
+.quality-pair>.mono,.reconstruction-index{font-size:11px}
+.reconstruction-table caption{font-size:30px;padding:11px 0 18px}
+.method-objectives{margin-top:34px;margin-bottom:24px;padding-top:18px}
+.paper-figure{margin-top:24px}
+#method .plate-note{font-size:12px;line-height:1.6;letter-spacing:.035em;color:#454d5d}
+.paper-figure .figure-open{padding-block:12px}
+.application-intro,.metrics-heading,.evidence-heading{margin-bottom:28px}
+.evidence-grid article{padding:24px 0 28px!important}
+.evidence-grid article:nth-child(2){padding-block:26px!important}
+.evidence-grid article:nth-child(3){padding-bottom:28px!important}
+.evidence-heading .outline-number{font-size:105px;padding:14px 25px 0}
+.metric-highlights{padding-top:18px}
+.metric-highlights>div{padding-bottom:18px;margin-bottom:18px}
+/* Acceleration: a full-width comparison with a compact summary above. */
+#acceleration .study-metrics{display:block;margin:24px 0 0}
+#acceleration .metric-highlights{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:0;margin:0 0 24px}
+#acceleration .metric-highlights>div{display:flex;align-items:center;gap:22px;margin:0;padding:0 0 14px;border-bottom:1px solid var(--line)}
+#acceleration .metric-highlights strong{font-size:32px;white-space:nowrap;letter-spacing:-.045em}
+#acceleration .metric-highlights p{font-size:12px;line-height:1.5;margin:0;max-width:230px}
+#acceleration .table-scroll{background:transparent}
+#metrics-table{width:100%;min-width:720px;border:0;border-collapse:collapse;font:15px/1.45 var(--sans);font-variant-numeric:tabular-nums}
+#metrics-table caption{font:28px/1.2 var(--serif);color:#20242c;text-align:left;padding:0 0 16px}
+#metrics-table th,#metrics-table td{border:0;border-bottom:1px solid #e0e4ed;padding:12px 16px;text-align:right;white-space:nowrap}
+#metrics-table thead th{font:12px/1.4 var(--sans);color:#626b7c;border-top:2px solid var(--blue);border-bottom:1px solid #aeb9d3}
+#metrics-table tr>:first-child{text-align:left;padding-left:0}
+#metrics-table tr>:last-child{padding-right:0}
+#metrics-table tbody th[scope="row"]{font:15px/1.45 var(--sans);color:#292e38;letter-spacing:0;text-transform:none}
+#metrics-table .metric-group th{padding:17px 0 8px;font:11px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#626b7c;border-bottom:1px solid #aeb9d3}
+#metrics-table tbody+tbody .metric-group th{color:var(--blue);border-top:1px solid #aeb9d3}
+#metrics-table tr.ours{background:transparent}
+#metrics-table tr.ours th[scope="row"],#metrics-table tr.ours .latency{color:#243fd0;font-weight:600}
+#metrics-table .latency{font-weight:600}
+#metrics-table .model-partner{font-weight:400;color:#626b7c}
+#metrics-table .cache-tag{font:11px var(--sans);color:#243fd0;border:1px solid #bdc8f3;padding:3px 5px;margin-left:7px;vertical-align:middle}
+#metrics-table tbody:last-child tr:last-child>*{border-bottom:1px solid #aeb9d3}
+#acceleration .metric-note{font-size:12px;line-height:1.6;margin:12px 0 0;max-width:none}
+@media(max-width:1100px){
+ #acceleration .metric-highlights>div{display:block}
+ #acceleration .metric-highlights p{max-width:none;margin-top:6px}
+}
+@media(max-width:760px){
+ #method .plate-note{font-size:10px;letter-spacing:.02em}
+ #acceleration .metric-highlights{gap:18px;margin-bottom:20px}
+ #acceleration .metric-highlights strong{font-size:24px}
+ #acceleration .metric-highlights p{font-size:11px}
+ #metrics-table caption{font-size:25px}
+ #metrics-table th,#metrics-table td{padding:10px 12px}
+}
+@media(max-width:1100px){
+ .quality-pair caption{font-size:30px}.quality-pair caption span{font-size:23px}
+ .reconstruction-table caption{font-size:27px}
+}
+@media(max-width:760px){
+ .section{padding-top:20px;padding-bottom:24px}
+ .section-meta{margin-bottom:18px;font-size:11px;padding-top:12px}
+ .section-meta>span:last-child{font-size:9px;max-width:145px}
+ .application-jump{font-size:11px;gap:12px;margin-bottom:20px}
+ .study-heading,.application-intro,.metrics-heading,.evidence-heading{margin-bottom:22px}
+ .validation-study{margin-top:24px;padding-top:20px}
+ .study-figure{margin-top:20px}.study-metrics{margin:22px 0}
+ .quality-pair caption{font-size:29px}.quality-pair caption span{font-size:22px}
+ .reconstruction-table caption{font-size:28px}
+ .method-objectives{margin-top:25px;margin-bottom:20px}
+ .evidence-heading .outline-number{font-size:65px;padding:12px 16px 0}
+}

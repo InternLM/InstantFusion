@@ -1,0 +1,11 @@
+/* One continuous viewport backdrop, independent of chapter height and scroll. */
+body{position:relative;isolation:isolate;background:#fff}
+body::before{content:'';display:block;position:fixed;inset:0;z-index:-1;pointer-events:none;background:url('assets/dedicated-background-v1.webp') center center/cover no-repeat;opacity:.40;mask-image:none;-webkit-mask-image:none}
+.section{position:relative;background:transparent;isolation:auto}
+.section::before,.section::after{content:none;display:none}
+.ambient-hero{display:none}
+.method-title-block,.method-abstract,.process-rail,.metrics-heading,.evidence-heading{position:relative}
+.paper-figure,.application-figure,.checkpoint-comparison figure,.table-scroll,.evidence-grid .figure-open{background:#fff}
+@media(max-width:760px){
+ body::before{background-size:auto 100%;background-position:48% center;opacity:.25}
+}

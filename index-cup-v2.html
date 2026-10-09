@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="InstantFusion connects frozen image generators through a shared latent interface that aligns states and local denoising dynamics.">
+  <meta name="theme-color" content="#ffffff">
+  <title>InstantFusion — A Shared Latent Interface</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="editorial.css">
+  <link rel="stylesheet" href="flat-editorial.css">
+  <link rel="stylesheet" href="sacred-editorial.css">
+  <link rel="stylesheet" href="ambient-background.css">
+  <link rel="stylesheet" href="flat-series.css">
+  <link rel="stylesheet" href="reading-rhythm.css">
+  <script defer src="app.js"></script>
+  <script defer src="encoding-dust.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#method">Skip to research</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="InstantFusion home"><span class="brand-icon noodle-mark" aria-hidden="true"><i class="noodle-sticks"></i><i class="noodle-rim"></i><i class="noodle-cup"><b>≋</b></i></span> InstantFusion<span class="wordmark-dot">.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#method">Method</a><a href="#results">Validation</a><a href="#acceleration">Applications</a><a href="#process">OPD</a>
+    </nav>
+    <span class="header-note mono">ARXIV / 2026</span>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-sticky">
+        <div class="ambient-hero" aria-hidden="true"></div>
+        <div class="raster-art" aria-hidden="true"><img src="assets/hero-geometric-v6.webp" width="1536" height="1024" fetchpriority="high" alt=""></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-topline mono" aria-hidden="true"><span class="type-fragment"><i>&lt;style&gt;@ / vfram</i><i>x{tovisi bility:h</i><i>&lt;/style&gt;  ani ies</i><i>:pstyl  --n:dden}</i><i>ls 5s;  wvar</i><i>&gt;STor   p-rmation:x</i><i>        :ds — ii</i></span><span class="type-fragment type-fragment-right"><i>@frme / n:th</i><i>v{ spli:ce }</i><i>  &lt;st / yle&gt;</i><i>n-0;  rtion</i><i>    // en:d</i></span></div>
+        <div class="hero-composition">
+          <div class="title-glyphs type-fragment" aria-hidden="true"><i>&lt;st / yle : n&gt;</i><i>   trns m / ation</i><i>v{ an:i  --frm }</i><i>  dis / p:la y</i></div>
+          <h1 id="hero-title"><span>Instant</span><span>Fusion<span class="title-star">✳</span></span></h1>
+          <canvas id="title-particles" aria-hidden="true"></canvas>
+        </div>
+        <div class="hero-bottom">
+          <div><p class="hero-subtitle">A shared latent interface for<br><em>heterogeneous image generators.</em></p>
+            <div class="paper-authors" aria-label="Authors and affiliations">
+              <div class="author-names">
+                <span>Xuanlang Dai<sup>1,2,*</sup></span><span>Jiazi Bu<sup>2,3,*</sup></span><span>Yujie Zhou<sup>3</sup></span><span>Yuhong Liu<sup>2,4</sup></span>
+                <span>Beichen Zhang<sup>2,4</sup></span><span>Penghui Yang<sup>2,3</sup></span><span>Ziyu Liu<sup>2,3</sup></span><span>Yuhang Zang<sup>2,†</sup></span>
+              </div>
+              <div class="author-affiliations"><span><sup>1</sup> Fudan University</span><span><sup>2</sup> Shanghai AI Laboratory</span><span><sup>3</sup> Shanghai Jiao Tong University</span><span><sup>4</sup> The Chinese University of Hong Kong</span></div>
+              <p class="author-contributions"><span><sup>*</sup> Equal contribution.</span><span><sup>†</sup> Corresponding author.</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-foot mono"><span class="scroll-cue"><i></i> SCROLL TO CONNECT</span></div>
+      </div>
+    </section>
+
+    <section class="section method-section" id="method" aria-labelledby="method-title">
+      <div class="section-meta mono"><span><b>I</b> / METHOD</span><span>LATENT STATES / DENOISING DYNAMICS</span></div>
+      <div class="method-spread">
+        <div class="method-title-block"><span class="eyebrow mono">INSTANTFUSION</span><h2 id="method-title">Shared latent<br><em>interface.</em></h2><p class="lead">A learned connection between independently trained image generators.</p></div>
+        <figure class="handoff-plate" aria-label="SD3, Qwen-Image and InstantFusion generation examples">
+          <div class="plate-wing" aria-hidden="true"><img src="assets/fusion-wing.webp" alt=""></div>
+          <div class="plate-halo" aria-hidden="true"></div><div class="plate-orbit" aria-hidden="true"></div>
+          <span class="plate-star" aria-hidden="true">✦</span>
+          <div class="plate-heading mono">SD3 + QWEN-IMAGE <span>CROSS-MODEL COMPOSITION</span></div>
+          <figure class="state-print state-source"><img src="assets/model-examples/sd3.webp" alt="Four SD3 examples of snowy mountains and flowers beneath a blue sky."><figcaption><b>SD3</b><span>Base model</span></figcaption></figure>
+          <div class="plate-interface"><span class="mono">ENCODE</span><strong>LAE</strong><span class="mono">SHARED SPACE</span><span class="mono">DECODE</span></div>
+          <figure class="state-print state-translated"><img src="assets/model-examples/qwen.webp" alt="Four Qwen-Image examples of snowy mountains and flower-covered valleys."><figcaption><b>Qwen-Image</b><span>Base model</span></figcaption></figure>
+          <span class="continue-label mono">COMPOSED GENERATION ↘</span>
+          <figure class="state-print state-final"><img src="assets/model-examples/mix.webp" alt="Four InstantFusion examples combining SD3 and Qwen-Image, depicting snowy mountains and flowers."><figcaption><b>InstantFusion</b><span>SD3 + Qwen-Image</span></figcaption></figure>
+          <figcaption class="plate-note mono">GENERATION EXAMPLES / INDIVIDUAL MODELS AND THEIR COMPOSITION</figcaption>
+        </figure>
+        <div class="method-abstract"><p>Each frozen generator connects to a common representation through a model-specific Latent AutoEncoder (LAE). Paired states from the same image and noise level are aligned while preserving the information needed for reconstruction.</p><p>Alignment also constrains local denoising dynamics, allowing an intermediate state to be translated into another model’s latent space and generation to continue.</p></div>
+      </div>
+      <div class="method-objectives">
+        <div><span class="mono">01.A / LATENT ALIGNMENT</span><h3><span class="loss-symbol"><i>L</i><sub>align</sub></span> State alignment</h3><p>Aligns encoded states from the same image at matched noise levels, establishing correspondence in the shared space.</p></div>
+        <div><span class="mono">01.B / RECONSTRUCTION</span><h3><span class="loss-symbol"><i>L</i><sub>rec</sub></span> Latent reconstruction</h3><p>Reconstructs each model’s input latent from its shared representation, preserving the information needed for subsequent denoising.</p></div>
+        <div><span class="mono">01.C / DYNAMICS ALIGNMENT</span><h3><span class="loss-symbol"><i>L</i><sub>dyn</sub></span> Denoising dynamics</h3><p>Aligns local denoising updates projected into the shared space, encouraging compatible evolution across models.</p></div>
+      </div>
+            <figure class="paper-figure"><button class="figure-open" data-image="assets/method.webp" data-caption="InstantFusion: training and inference overview." aria-label="Enlarge method overview"><img src="assets/method.webp" width="2400" height="1100" loading="lazy" alt="InstantFusion training and inference pipelines, showing latent autoencoders and shared-space alignment."><span class="enlarge mono">FULL FIGURE ↗</span></button><figcaption>Training and inference pipelines of InstantFusion.</figcaption></figure>
+
+    </section>
+    <section class="section results-section validation-section" id="results" aria-labelledby="results-title">
+ <div class="section-meta mono"><span><b>II</b> / INTERFACE VALIDATION</span><span>RECONSTRUCTION / CROSS-MODEL DENOISING</span></div>
+ <div class="study-heading"><h2 id="results-title">Preserve states.<br><em>Continue denoising.</em></h2><p>We first evaluate what the shared interface preserves, then examine generation when denoising moves between models.</p></div>
+ <article class="validation-study" id="reconstruction"><div class="study-copy"><span class="mono">02.A / RECONSTRUCTION QUALITY</span><h3>Repeated latent round trips</h3><p>Reconstruction fidelity is measured after 1, 5, and 10 round trips. A single round trip retains high fidelity; repeated translations accumulate reconstruction error.</p></div>
+ <div class="reconstruction-layout"><div class="reconstruction-comparison"><div class="reconstruction-group"><span class="reconstruction-index mono" aria-hidden="true">01 / SHARED SPACE</span><table class="reconstruction-table"><caption>SD3–Qwen</caption><thead><tr><th scope="col">Trips</th><th scope="col">PSNR <span>↑</span></th><th scope="col">SSIM <span>↑</span></th><th scope="col">LPIPS <span>↓</span></th></tr></thead><tbody><tr class="single-trip"><th scope="row">1</th><td>31.375</td><td>0.9417</td><td>0.04028</td></tr><tr><th scope="row">5</th><td>22.977</td><td>0.8431</td><td>0.12630</td></tr><tr><th scope="row">10</th><td>20.043</td><td>0.7670</td><td>0.18892</td></tr></tbody></table></div><div class="reconstruction-group"><span class="reconstruction-index mono" aria-hidden="true">02 / SHARED SPACE</span><table class="reconstruction-table"><caption>FLUX–Qwen</caption><thead><tr><th scope="col">Trips</th><th scope="col">PSNR <span>↑</span></th><th scope="col">SSIM <span>↑</span></th><th scope="col">LPIPS <span>↓</span></th></tr></thead><tbody><tr class="single-trip"><th scope="row">1</th><td>32.579</td><td>0.9496</td><td>0.03663</td></tr><tr><th scope="row">5</th><td>22.663</td><td>0.8450</td><td>0.13064</td></tr><tr><th scope="row">10</th><td>19.106</td><td>0.7621</td><td>0.21014</td></tr></tbody></table></div><div class="reconstruction-group"><span class="reconstruction-index mono" aria-hidden="true">03 / SHARED SPACE</span><table class="reconstruction-table"><caption>SD3–FLUX–Qwen</caption><thead><tr><th scope="col">Trips</th><th scope="col">PSNR <span>↑</span></th><th scope="col">SSIM <span>↑</span></th><th scope="col">LPIPS <span>↓</span></th></tr></thead><tbody><tr class="single-trip"><th scope="row">1</th><td>32.397</td><td>0.9511</td><td>0.03257</td></tr><tr><th scope="row">5</th><td>23.445</td><td>0.8580</td><td>0.11006</td></tr><tr><th scope="row">10</th><td>20.119</td><td>0.7808</td><td>0.17591</td></tr></tbody></table></div></div>
+ <figure class="study-figure"><button class="figure-open" data-image="assets/reconstruction.webp" data-caption="Visual reconstruction after 1, 5, and 10 latent round trips." aria-label="Enlarge reconstruction results"><img src="assets/reconstruction.webp" loading="lazy" alt="Visual reconstruction after 1, 5, and 10 latent round trips."><span class="enlarge mono">EXPAND ↗</span></button><figcaption>Visual reconstruction after 1, 5, and 10 latent round trips.</figcaption></figure></div></article>
+ <article class="validation-study" id="cross-model-denoising"><div class="study-copy"><span class="mono">02.B / CROSS-MODEL DENOISING</span><h3>Generation across model boundaries</h3><p>Translate an intermediate state through the shared space and continue denoising with another generator. The examples compare model combinations; the table reports their generation quality.</p></div>
+ <figure class="study-figure"><button class="figure-open" data-image="assets/transfer.webp" data-caption="Cross-model generation with SD3, FLUX.1, and Qwen-Image." aria-label="Enlarge transfer results"><img src="assets/transfer.webp" loading="lazy" alt="Cross-model generation with SD3, FLUX.1, and Qwen-Image."><span class="enlarge mono">EXPAND ↗</span></button><figcaption>Cross-model generation with SD3, FLUX.1, and Qwen-Image.</figcaption></figure>
+ <div class="quality-comparison"><div id="quality-pairs" class="quality-pairs"></div><p id="quality-note" class="quality-footnote"></p></div>
+ </article></section>
+<section class="section metrics-section application-study" id="acceleration" aria-labelledby="acceleration-title">
+ <div class="section-meta mono"><span><b>III</b> / APPLICATIONS</span><span>01 / GENERATION ACCELERATION</span></div>
+ <nav class="application-jump mono" aria-label="Application sections"><a href="#acceleration" aria-current="location">01 Acceleration</a><a href="#preferences">02 Multi-preference composition</a><a href="#process">03 Cross-model OPD</a></nav>
+ <div class="study-heading"><h2 id="acceleration-title">Faster<br><em>generation.</em></h2><p>Combine efficient generators with Qwen-Image to reduce inference time. Adaptive switching uses the relative change in predicted-clean latents to decide when to hand off.</p></div>
+ <div id="metrics" class="study-metrics"><div id="metric-highlights" class="metric-highlights"></div><div class="table-scroll" role="region" aria-label="Generation acceleration benchmarks" tabindex="0"><table id="metrics-table"></table></div><p id="metric-note" class="metric-note"></p></div>
+ </section>
+<section class="section application-study preferences-section" id="preferences" aria-labelledby="preferences-title">
+ <div class="section-meta mono"><span><b>III</b> / APPLICATIONS</span><span>02 / MULTI-PREFERENCE COMPOSITION</span></div>
+ <div class="application-intro"><div class="chapter-stamp" aria-hidden="true"><span>02</span><div class="print-marks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><b>+</b></div></div><div><h2 id="preferences-title">Multiple preferences.<br><em>One generation.</em></h2><p class="intro-note">Combine existing preference experts during denoising without training a new joint model for every preference combination.</p></div><div class="result-fragment" aria-hidden="true"><img src="assets/preference-composition-flat.webp" loading="lazy" alt=""></div></div>
+ <figure class="study-figure"><button class="figure-open" data-image="assets/preferences.webp" data-caption="Qualitative examples of multi-preference composition using existing experts." aria-label="Enlarge preferences results"><img src="assets/preferences.webp" loading="lazy" alt="Qualitative examples of multi-preference composition using existing experts."><span class="enlarge mono">EXPAND ↗</span></button><figcaption>Qualitative examples of multi-preference composition using existing experts.</figcaption></figure>
+ </section>
+<section class="section process-section" id="process" aria-labelledby="process-title">
+      <div class="section-meta mono"><span><b>III</b> / APPLICATIONS</span><span>03 / CROSS-MODEL OPD</span></div>
+      <div class="process-spread"><aside class="process-rail"><h2 id="process-title">Cross-model<br><em>on-policy distillation.</em></h2><p>Compare the SD3 baseline with successive checkpoints trained using supervision from Qwen-Image.</p><p>Choose a prompt, then move through training to inspect how its output changes.</p><div class="rail-art" aria-hidden="true"><div class="rail-photo"><img src="assets/denoising-encoding-v2.webp" loading="lazy" alt=""></div><span class="rail-rule"></span><div class="print-marks " aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><b>+</b></div></div><span class="mono rail-footnote">300—2,400<br>TRAINING UPDATES</span></aside><div class="process-workbench">      <div class="process-toolbar"><div class="case-switch" role="group" aria-label="Choose example"><button class="selected" data-case="02" aria-pressed="true">Snowy forest</button><button data-case="08" aria-pressed="false">Blue crystal</button><button data-case="11" aria-pressed="false">Giant flowers</button></div><span class="mono">TRAINING CHECKPOINTS / NOT SAMPLING STEPS</span></div>
+      <div class="checkpoint-comparison">
+        <figure><div class="image-label mono"><span>SD3 BASELINE</span><span>BEFORE OPD</span></div><img id="baseline-image" src="assets/p02-baseline.webp" width="512" height="512" loading="lazy" alt="SD3 baseline: a fox carrying a green backpack in a snowy forest."></figure>
+        <div class="comparison-axis" aria-hidden="true"><span>→</span><i></i><span class="mono">LAE</span><i></i><span>→</span></div>
+        <figure><div class="image-label mono"><span>WITH CROSS-MODEL OPD</span><span id="checkpoint-label">STEP 2,400</span></div><img id="checkpoint-image" src="assets/p02-step_002400.webp" width="512" height="512" loading="lazy" alt="Cross-model OPD at training step 2400: a fox carrying a green backpack in a snowy forest."></figure>
+      </div>
+      <div class="timeline-control"><button id="play-timeline" class="play-button" aria-label="Play training checkpoints">▶</button><div class="timeline-track"><label class="sr-only" for="checkpoint-slider">OPD training checkpoint</label><input id="checkpoint-slider" type="range" min="0" max="7" step="1" value="7" aria-valuetext="Training step 2400"><div class="range-labels mono"><span>300</span><span>600</span><span>900</span><span>1,200</span><span>1,500</span><span>1,800</span><span>2,100</span><span>2,400</span></div></div></div>
+      <p class="process-caption"><span class="mono">SUBJECT /</span> <span id="case-caption">A fox with a green backpack in a snowy pine forest.</span></p>
+</div></div>
+</section>
+<section class="section evidence-section" id="evidence" aria-labelledby="evidence-title">
+      <div class="section-meta mono"><span><b>IV</b> / ANALYSIS</span><span>OBSERVATION / ALIGNMENT / TRAINING</span></div>
+      <div class="evidence-heading"><span class="outline-number" aria-hidden="true">IV</span><h2 id="evidence-title">Inside the<br><em>interface.</em></h2><div class="print-marks " aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><b>+</b></div></div>
+            <div class="evidence-grid">
+        <article><button class="figure-open" data-image="assets/observation.webp" data-caption="Spatial self-similarity and direct model handoff motivate a learned interface." aria-label="Enlarge cross-model observations"><img src="assets/observation.webp" width="2400" height="950" loading="lazy" alt="Spatial self-similarity across models and direct handoff results."><span class="enlarge mono">↗</span></button><div class="evidence-caption"><span class="mono">A / OBSERVATION</span><h3>Cross-model compatibility</h3><p>Related spatial patterns and preserved coarse content suggest partial compatibility between independently trained generators.</p></div></article>
+        <article><button class="figure-open" data-image="assets/feature.webp" data-caption="Dynamics alignment improves the correspondence between local denoising velocities." aria-label="Enlarge feature alignment results"><img src="assets/feature.webp" width="2400" height="760" loading="lazy" alt="UMAP plots and cosine similarities comparing state and velocity alignment with and without dynamics loss."><span class="enlarge mono">↗</span></button><div class="evidence-caption"><span class="mono">B / DYNAMICS ALIGNMENT</span><h3>The role of dynamics alignment</h3><p>Adding the dynamics objective preserves state alignment and improves velocity alignment between models.</p></div></article>
+        
+        <article><button class="figure-open" data-image="assets/training.webp" data-caption="LAE training curves for reconstruction, state alignment, and velocity alignment." aria-label="Enlarge training curves"><img src="assets/training.webp" width="2400" height="760" loading="lazy" alt="Total, reconstruction, state-alignment, and velocity-alignment loss curves."><span class="enlarge mono">↗</span></button><div class="evidence-caption"><span class="mono">C / TRAINING DYNAMICS</span><h3>LAE training dynamics</h3><p>Reconstruction, state alignment, and dynamics alignment are optimized together while the generators stay frozen.</p></div></article>
+      </div>
+
+    </section>
+  </main>
+  <footer><div class="footer-composition"><div class="footer-graphic" aria-hidden="true"><img src="assets/shared-interface-flat.webp" loading="lazy" alt=""></div><div><span class="mono">A SHARED LATENT INTERFACE</span><p class="footer-title">InstantFusion<span>↗</span></p><p class="footer-description">Latent alignment and denoising continuity<br>across heterogeneous image generators.</p><a class="back-top mono" href="#top">RETURN TO TOP ↑</a></div></div><div class="footer-bottom mono"><span>INSTANTFUSION / RESEARCH PROJECT</span><span>SD3 · FLUX · QWEN-IMAGE</span><a href="#method">METHOD ↑</a></div></footer>
+  <dialog id="figure-dialog" aria-labelledby="dialog-caption"><button id="close-dialog" aria-label="Close enlarged figure">Close ×</button><div class="dialog-image-wrap"><img id="dialog-image" alt=""></div><p id="dialog-caption"></p></dialog>
+</body>
+</html>

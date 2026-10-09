@@ -1,0 +1,26 @@
+/* Material detail stays inside raster fragments; the page remains white. */
+.plate-wing{right:-4%;top:4%;width:60%;height:56%;z-index:-2}
+.plate-wing img{width:145%;left:-34%;top:-9%}
+.plate-halo{border-color:#9096a055}.plate-halo:after{border-color:#9096a025}
+.plate-orbit{border-color:#2042cf60}
+.state-print{border:0;padding:0;background:white}
+.state-print:before{content:'';position:absolute;inset:-6px auto auto -6px;width:19px;height:19px;border-left:1px solid var(--blue);border-top:1px solid var(--blue);pointer-events:none}
+.state-print figcaption{padding:10px 1px 7px;border-bottom:1px solid #8c929d}
+.state-print b{font-size:20px}.state-print span{font-size:10px}
+.plate-interface{border-block:0;border-left:1px solid #c7cbd3;border-right:1px solid #c7cbd3}
+.plate-interface strong{font-size:32px}.plate-interface .mono{font-size:7px}
+.continue-label{font-size:8px;bottom:19%}
+.plate-heading{font-size:10px}.plate-heading span{font-size:8px}.plate-note{font-size:7px}
+.plate-star{font-size:35px;color:#373b44}
+.rail-photo{height:190px;width:100%}.rail-photo img{width:330px;left:-22px;top:-22px}
+.rail-rule{background:#a5aab5;top:195px}.rail-art .print-marks{top:210px}
+@media(max-width:1100px){.state-print b{font-size:17px}.state-print span{font-size:9px}.plate-heading span{font-size:6px}}
+@media(max-width:760px){
+ .handoff-plate{aspect-ratio:.9;margin-bottom:28px}
+ .plate-wing{width:64%;height:53%;right:-3%;top:6%}
+ .state-print b{font-size:13px}.state-print span{font-size:7px;line-height:1.45}.state-print figcaption{padding:7px 0 6px}
+ .state-print:before{width:12px;height:12px;left:-4px;top:-4px}
+ .plate-interface strong{font-size:23px}.plate-interface .mono{font-size:6px}.plate-heading{font-size:7px}.plate-heading span{font-size:5px}
+ .continue-label{font-size:6px;left:13%;bottom:20%}.plate-note{font-size:5px}
+ .rail-photo{height:137px}.rail-photo img{width:200px;left:-50px;top:0}.rail-rule{top:142px}.rail-art .print-marks{top:157px}
+}

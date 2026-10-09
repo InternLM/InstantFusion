@@ -1,0 +1,82 @@
+/* Editorial composition: asymmetric chapter rhythm, pure white paper. */
+:root{--paper:#fff;--blue:#243fca;--gold:#72777c}
+body{background:#fff}
+.site-header{height:85px;border:0}
+.hero{height:165svh}
+.hero-sticky{min-height:740px}
+.hero-topline{font-size:8px;letter-spacing:.12em}
+.hero-composition{inset:175px 7% 155px}
+.hero h1{font-size:clamp(108px,13.4vw,215px);letter-spacing:-.078em;top:30px;line-height:.8}
+.hero h1>span:nth-child(2){margin-left:13vw;margin-top:.2em}
+.hero h1>span:first-child::before{content:'THE INTERFACE / INSTANTFUSION';color:var(--ink);font-size:8px;letter-spacing:.12em;top:-40px}
+.hero h1 .title-star{font-size:.2em;margin-top:.5em}
+.hero h1{text-shadow:0 0 12px white,0 0 7px white}
+.hero-grid{border:0;background:none}
+.hero-grid::before,.hero-grid::after{bottom:26px;font-size:15px}
+.raster-art{position:absolute;top:80px;right:-1%;width:70%;height:calc(100% - 80px);background:none;filter:none;mix-blend-mode:multiply;mask-image:none;-webkit-mask-image:none;overflow:hidden}
+.raster-art img{width:100%;height:100%;object-fit:contain;object-position:center}
+.hero-bottom{bottom:110px;z-index:3}
+.hero-subtitle{font-size:clamp(21px,2vw,29px)}
+.hero-description{max-width:320px;font-size:11px}
+.circle-link{border:0;border-radius:0;width:auto;height:auto;gap:25px;align-items:center;padding:10px 0;background:#fff}
+.circle-link>span:first-child{text-transform:uppercase;font:9px/1.7 var(--mono);letter-spacing:.1em}
+.circle-link>span:last-child{font-size:42px}
+.circle-link:hover{background:white;color:var(--blue)}
+.circle-link:hover>span:last-child{color:var(--blue)}
+.hero-foot{font-size:8px}
+.section{padding-top:65px;padding-bottom:110px}
+.section-meta{border-top-color:#c8cfdb;padding-top:22px;margin-bottom:80px;font-size:9px}
+.section-heading{gap:13%;grid-template-columns:1.1fr 1fr}
+.section-heading h2{letter-spacing:-.06em}
+.method-section .section-heading{max-width:1020px;margin-left:9%}
+.method-layout{margin-top:70px}
+.interface-diagram{background:none;border:0;border-block:1px solid #cad1e9}
+.method-notes article{padding-block:28px}
+.fact-strip{margin-top:80px;margin-bottom:55px}
+.fact-strip strong{font-size:55px}
+.paper-figure .figure-open{padding:30px 0;border-inline:0;background:white}
+.paper-figure figcaption{margin-top:20px}
+.results-section .section-heading{grid-template-columns:1fr 1fr;gap:20%;align-items:center}
+.application-tabs{border-bottom:1px solid #243cba}
+.application-tabs button{border:none!important;border-bottom:3px solid transparent!important;padding:17px 0;background:none!important;font-size:12px}
+.application-tabs button span{font-size:40px;margin-bottom:13px;line-height:1}
+.application-tabs button[aria-selected=true]{color:var(--blue);border-bottom-color:var(--blue)!important}
+.application-tabs button[aria-selected=true] span{color:var(--blue)}
+.application-tabs button:hover{color:var(--blue)}
+.application-copy{margin-top:30px;grid-template-columns:1fr 1fr;gap:20%}
+.application-figure{border:0;padding:10px 0}
+.process-section{margin-top:30px}
+.process-section .section-heading h2{color:var(--blue)}
+.process-section .section-heading h2 em{color:var(--ink)}
+.checkpoint-comparison{margin-top:42px}
+.metric-highlights{margin-block:50px}
+.metric-highlights strong{font-size:64px}
+.metric-highlights>div{border-left:0;padding:0}
+.metric-note{max-width:780px}
+.evidence-grid{grid-template-columns:1fr 1fr;gap:75px 7%}
+.evidence-grid article:nth-child(even){padding-top:110px}
+.evidence-grid .figure-open{border:0;border-block:1px solid #d8dded;padding:20px 0}
+.evidence-caption h3{font-size:29px}
+.evidence-section .section-heading{margin-bottom:60px}
+footer{background-image:none;border-top-color:#c8cfdb;padding-top:85px}
+.footer-title{font-size:clamp(45px,6.2vw,96px)}
+@media(max-width:1100px){.hero h1{font-size:14vw}.raster-art{right:-7%;width:72%}.method-section .section-heading{margin-left:0}.metric-highlights strong{font-size:48px}}
+@media(max-width:760px){
+  .hero{height:155svh}.hero-sticky{min-height:780px}.site-header{height:65px}
+  .hero-composition{inset:142px 7% 170px}.hero h1{top:0;font-size:21vw}
+  .hero h1>span:nth-child(2){margin-left:14vw;margin-top:.16em}.hero h1>span:first-child::before{font-size:6px;top:-25px}
+  .raster-art{top:295px;right:0;width:100%;height:320px;filter:none;mask-image:none;-webkit-mask-image:none}
+  .hero-bottom{bottom:68px;gap:8px}.hero-subtitle{font-size:19px;max-width:255px}
+  .hero-description{font-size:9px;max-width:220px;margin-top:12px}.circle-link{gap:6px}
+  .circle-link>span:first-child{font-size:6px}.circle-link>span:last-child{font-size:28px}
+  .hero-foot{font-size:6px;bottom:20px}.section{padding-top:35px;padding-bottom:60px}.section-meta{margin-bottom:40px}
+  .section-heading,.results-section .section-heading{grid-template-columns:1fr;gap:22px}
+  .method-layout{margin-top:32px}.fact-strip{margin:35px 0}.fact-strip strong{font-size:36px}
+  .paper-figure .figure-open{padding:18px 0}.application-tabs button{font-size:10px;padding:13px 0}
+  .application-tabs button span{font-size:25px;display:inline-block;margin:0 10px 0 0}.application-copy{margin-top:12px}
+  .process-section{margin-top:0}.checkpoint-comparison{margin-top:20px}.metric-highlights{margin-block:25px}
+  .metric-highlights strong{font-size:31px}.evidence-grid{grid-template-columns:1fr;gap:35px}
+  .evidence-grid article:nth-child(even){padding-top:0}.evidence-caption h3{font-size:25px}
+  .footer-title{font-size:39px}footer{padding-top:45px}
+}
+@media(prefers-reduced-motion:reduce){.hero{height:100svh;min-height:780px}}
