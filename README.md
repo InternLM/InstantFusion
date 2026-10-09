@@ -1,4 +1,6 @@
-# InstantFusion
+<p align="center">
+  <img src="fig/instantfusion-banner.png" alt="InstantFusion — A Shared Latent Interface for Image Generators" width="100%">
+</p>
 
 <p align="center">
   <strong>Composing diffusion models through a shared latent space</strong>
@@ -7,25 +9,27 @@
 <p align="center">
   <a href="https://github.com/InternLM/InstantFusion"><img src="https://img.shields.io/badge/Code-Available-2E7D32?style=flat-square&logo=github" alt="Code available"></a>
   <img src="https://img.shields.io/badge/Paper-Coming%20soon-9E9E9E?style=flat-square" alt="Paper coming soon">
-  <img src="https://img.shields.io/badge/Homepage-Coming%20soon-9E9E9E?style=flat-square" alt="Homepage coming soon">
-  <img src="https://img.shields.io/badge/Model-Coming%20soon-9E9E9E?style=flat-square" alt="Model weights coming soon">
+  <a href="https://internlm.github.io/InstantFusion/"><img src="https://img.shields.io/badge/Project%20Page-GitHub%20Pages-2441DD?style=flat-square" alt="InstantFusion project page"></a>
+  <a href="https://huggingface.co/XuanlangDai/InstantFusion"><img src="https://img.shields.io/badge/Model-Hugging%20Face-2441DD?style=flat-square&logo=huggingface" alt="Model checkpoints on Hugging Face"></a>
   <img src="https://img.shields.io/badge/Dataset-Coming%20soon-9E9E9E?style=flat-square" alt="Dataset coming soon">
 </p>
 
 <p align="center">
   <img src="fig/method.png" alt="InstantFusion method: shared-latent alignment, cross-model OPD, acceleration, and multi-reward composition" width="100%">
 </p>
-
-<p align="center"><a href="fig/method.pdf">View the full-resolution method figure (PDF)</a></p>
-
 ## Overview
 
-InstantFusion brings diffusion models into a shared latent space so their denoising trajectories can be aligned and composed. The current implementation uses **SD3** and **Qwen-Image** as its two models:
+InstantFusion maps the latents of different diffusion models into a shared latent space, so their denoising trajectories can be aligned and composed. 
 
-1. **Latent alignment encoder (LAE):** sigma-conditioned encoders and decoders map both models' latents into a shared space. Training combines reconstruction, cross-reconstruction, latent alignment, and denoising-velocity alignment.
-2. **Cross-model OPD:** with Qwen-Image and the LAE frozen, an SD3 LoRA learns from Qwen-Image at selected denoising steps while retaining an SD3 reference objective.
+**Latent alignment encoder (LAE).** Sigma-conditioned encoders and decoders map both models’ latents into the shared space. Training combines reconstruction, cross-reconstruction, latent alignment, and denoising-velocity alignment losses.
 
-The method figure also illustrates model handoff for acceleration and composition. This repository includes **LAE and OPD training** and **LAE-based model handoff inference**. The current inference entry point does not load the trained OPD LoRA yet.
+**Applications.** Once the models share a latent space, a trajectory can be handed off from one model to another mid-denoising. This enables:
+
+- **Acceleration:** hand off between models with different step budgets.
+- **Multi-preference composition:** combine models optimized for different preferences.
+- **Cross-model OPD:** on-policy distillation of model B’s velocity field *v* from model A in the shared latent space.
+
+This repository includes LAE training, OPD training, and LAE-based model handoff inference.
 
 ## Visual results
 
@@ -36,9 +40,6 @@ The examples below compare the baseline with the LAE reconstruction results for 
 <p align="center">
   <a href="fig/reconstruct.pdf"><img src="fig/reconstruct.png" alt="LAE reconstruction examples and mean SSIM for Qwen-Image, FLUX.1, and SD3" width="100%"></a>
 </p>
-
-[Open the reconstruction figure as a PDF](fig/reconstruct.pdf) for a closer view.
-
 ### Cross-model denoising handoff
 
 These examples show the results of switching models and continuing denoising with the second model. The figure includes model pairings beyond the SD3/Qwen-Image inference implementation currently available in this repository.
@@ -46,10 +47,9 @@ These examples show the results of switching models and continuing denoising wit
 <p align="center">
   <a href="fig/trans.pdf"><img src="fig/trans.png" alt="Image examples of cross-model handoff and continued denoising" width="100%"></a>
 </p>
-
-[Open the handoff figure as a PDF](fig/trans.pdf) to inspect the individual examples.
-
 ## Quick start
+
+Trained InstantFusion checkpoints are available on [Hugging Face](https://huggingface.co/XuanlangDai/InstantFusion).
 
 ### 1. Set up the environment
 
@@ -70,6 +70,8 @@ export DIFFSYNTH_ROOT=/path/to/DiffSynth-Studio
 Provide a Qwen-Image model directory containing `transformer/`, `text_encoder/`, `vae/`, and `tokenizer/`, plus an SD3 single-file checkpoint. Model weights are not bundled with this repository.
 
 ### 2. Prepare the dataset
+
+> We use [VisPrompt5M](https://huggingface.co/datasets/CSU-JPG/VisPrompt5M) for training, which is not included in this repository.
 
 The training data is supplied locally and is not included in this repository:
 
@@ -132,8 +134,6 @@ bash scripts/infer.sh \
   --prompt "A lighthouse above a quiet sea at sunrise" \
   --output-dir ./outputs/inference
 ```
-
-Inference defaults to 512 × 512 images, 50 steps, seed 42, and an adaptive SD3-to-Qwen-Image handoff with threshold `0.12`. Use `--size 512x768`, `--steps`, or `--seed` to change common settings. Use `--direction qwen_to_sd3` for the reverse route, or `--switch-step N` for a fixed handoff. Missing prompt embeddings are prepared automatically under `<output-dir>/prompt_cache` unless `prompt_embedding_dir` is set in a JSON config.
 
 ### Advanced settings
 
