@@ -1,4 +1,5 @@
 /* Compact chapter spacing; preserve the separate hero composition. */
+.site-header nav,.application-jump,.section-meta,.eyebrow,.study-copy>.mono,.method-objectives>div>.mono,.evidence-caption>.mono,.quality-pair>.mono,.reconstruction-index,.image-label,.plate-heading,.plate-note{ text-transform:uppercase }
 .section{padding-top:28px;padding-bottom:36px}
 .section-meta{margin-bottom:24px;padding-top:14px;font-size:12px;letter-spacing:.06em}
 .section-meta>span:last-child{font-size:11px}

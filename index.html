@@ -22,7 +22,7 @@
   <header class="site-header">
     <a class="wordmark" href="#top" aria-label="InstantFusion home"><span class="brand-icon noodle-mark" aria-hidden="true"><i class="noodle-sticks"></i><i class="noodle-rim"></i><i class="noodle-cup"><b>≋</b></i></span> InstantFusion<span class="wordmark-dot">.</span></a>
     <nav aria-label="Main navigation">
-      <a href="#method">Method</a><a href="#results">Validation</a><a href="#acceleration">Applications</a><a href="#process">OPD</a>
+      <a href="#method">METHOD</a><a href="#results">VALIDATION</a><a href="#acceleration">APPLICATIONS</a><a href="#evidence">ANALYSIS</a>
     </nav>
     <span class="header-note mono">ARXIV / 2026</span>
   </header>
@@ -93,7 +93,7 @@
  </article></section>
 <section class="section metrics-section application-study" id="acceleration" aria-labelledby="acceleration-title">
  <div class="section-meta mono"><span><b>III</b> / APPLICATIONS</span><span>01 / GENERATION ACCELERATION</span></div>
- <nav class="application-jump mono" aria-label="Application sections"><a href="#acceleration" aria-current="location">01 Acceleration</a><a href="#preferences">02 Multi-preference composition</a><a href="#process">03 Cross-model OPD</a></nav>
+ <nav class="application-jump mono" aria-label="Application sections"><a href="#acceleration" aria-current="location">01 ACCELERATION</a><a href="#preferences">02 MULTI-PREFERENCE COMPOSITION</a><a href="#process">03 CROSS-MODEL DISTILLATION</a></nav>
  <div class="study-heading"><h2 id="acceleration-title">Faster<br><em>generation.</em></h2><p>Combine efficient generators with Qwen-Image to reduce inference time. Adaptive switching uses the relative change in predicted-clean latents to decide when to hand off.</p></div>
  <div id="metrics" class="study-metrics"><div id="metric-highlights" class="metric-highlights"></div><div class="table-scroll" role="region" aria-label="Generation acceleration benchmarks" tabindex="0"><table id="metrics-table"></table></div><p id="metric-note" class="metric-note"></p></div>
  </section>
@@ -103,14 +103,14 @@
  <figure class="study-figure"><button class="figure-open" data-image="assets/preferences.webp" data-caption="Qualitative examples of multi-preference composition using existing experts." aria-label="Enlarge preferences results"><img src="assets/preferences.webp" loading="lazy" alt="Qualitative examples of multi-preference composition using existing experts."><span class="enlarge mono">EXPAND ↗</span></button><figcaption>Qualitative examples of multi-preference composition using existing experts.</figcaption></figure>
  </section>
 <section class="section process-section" id="process" aria-labelledby="process-title">
-      <div class="section-meta mono"><span><b>III</b> / APPLICATIONS</span><span>03 / CROSS-MODEL OPD</span></div>
+      <div class="section-meta mono"><span><b>III</b> / APPLICATIONS</span><span>03 / CROSS-MODEL DISTILLATION</span></div>
       <div class="process-spread"><aside class="process-rail"><h2 id="process-title">Cross-model<br><em>on-policy distillation.</em></h2><p>Compare the SD3 baseline with successive checkpoints trained using supervision from Qwen-Image.</p><p>Choose a prompt, then move through training to inspect how its output changes.</p><div class="rail-art" aria-hidden="true"><div class="rail-photo"><img src="assets/denoising-encoding-v2.webp" loading="lazy" alt=""></div><span class="rail-rule"></span><div class="print-marks " aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><b>+</b></div></div><span class="mono rail-footnote">300—2,400<br>TRAINING UPDATES</span></aside><div class="process-workbench">      <div class="process-toolbar"><div class="case-switch" role="group" aria-label="Choose example"><button class="selected" data-case="02" aria-pressed="true">Snowy forest</button><button data-case="08" aria-pressed="false">Blue crystal</button><button data-case="11" aria-pressed="false">Giant flowers</button></div><span class="mono">TRAINING CHECKPOINTS / NOT SAMPLING STEPS</span></div>
       <div class="checkpoint-comparison">
-        <figure><div class="image-label mono"><span>SD3 BASELINE</span><span>BEFORE OPD</span></div><img id="baseline-image" src="assets/p02-baseline.webp" width="512" height="512" loading="lazy" alt="SD3 baseline: a fox carrying a green backpack in a snowy forest."></figure>
+        <figure><div class="image-label mono"><span>SD3 BASELINE</span><span>BEFORE DISTILLATION</span></div><img id="baseline-image" src="assets/p02-baseline.webp" width="512" height="512" loading="lazy" alt="SD3 baseline: a fox carrying a green backpack in a snowy forest."></figure>
         <div class="comparison-axis" aria-hidden="true"><span>→</span><i></i><span class="mono">LAE</span><i></i><span>→</span></div>
-        <figure><div class="image-label mono"><span>WITH CROSS-MODEL OPD</span><span id="checkpoint-label">STEP 2,400</span></div><img id="checkpoint-image" src="assets/p02-step_002400.webp" width="512" height="512" loading="lazy" alt="Cross-model OPD at training step 2400: a fox carrying a green backpack in a snowy forest."></figure>
+        <figure><div class="image-label mono"><span>WITH CROSS-MODEL DISTILLATION</span><span id="checkpoint-label">STEP 2,400</span></div><img id="checkpoint-image" src="assets/p02-step_002400.webp" width="512" height="512" loading="lazy" alt="Cross-model on-policy distillation at training step 2400: a fox carrying a green backpack in a snowy forest."></figure>
       </div>
-      <div class="timeline-control"><button id="play-timeline" class="play-button" aria-label="Play training checkpoints">▶</button><div class="timeline-track"><label class="sr-only" for="checkpoint-slider">OPD training checkpoint</label><input id="checkpoint-slider" type="range" min="0" max="7" step="1" value="7" aria-valuetext="Training step 2400"><div class="range-labels mono"><span>300</span><span>600</span><span>900</span><span>1,200</span><span>1,500</span><span>1,800</span><span>2,100</span><span>2,400</span></div></div></div>
+      <div class="timeline-control"><button id="play-timeline" class="play-button" aria-label="Play training checkpoints">▶</button><div class="timeline-track"><label class="sr-only" for="checkpoint-slider">On-policy distillation training checkpoint</label><input id="checkpoint-slider" type="range" min="0" max="7" step="1" value="7" aria-valuetext="Training step 2400"><div class="range-labels mono"><span>300</span><span>600</span><span>900</span><span>1,200</span><span>1,500</span><span>1,800</span><span>2,100</span><span>2,400</span></div></div></div>
       <p class="process-caption"><span class="mono">SUBJECT /</span> <span id="case-caption">A fox with a green backpack in a snowy pine forest.</span></p>
 </div></div>
 </section>

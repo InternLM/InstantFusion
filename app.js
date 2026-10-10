@@ -16,7 +16,7 @@ const checkpointSlider = $('#checkpoint-slider');
 function setCheckpoint() {
   const step = (Number(checkpointSlider.value) + 1) * 300;
   $('#checkpoint-image').src = `assets/p${currentCase}-step_${String(step).padStart(6,'0')}.webp`;
-  $('#checkpoint-image').alt = `Cross-model OPD at training step ${step}: ${examples[currentCase]}`;
+  $('#checkpoint-image').alt = `Cross-model on-policy distillation at training step ${step}: ${examples[currentCase]}`;
   $('#checkpoint-label').textContent = `STEP ${step.toLocaleString('en-US')}`;
   checkpointSlider.setAttribute('aria-valuetext', `Training step ${step}`);
   checkpointSlider.style.setProperty('--fill', `${Number(checkpointSlider.value)/7*100}%`);
