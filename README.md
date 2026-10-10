@@ -16,6 +16,7 @@
 <p align="center">
   <img src="fig/method.png" alt="InstantFusion method: shared-latent alignment, cross-model OPD, acceleration, and multi-reward composition" width="100%">
 </p>
+
 ## Overview
 
 InstantFusion maps the latents of different diffusion models into a shared latent space, so their denoising trajectories can be aligned and composed. 
@@ -46,6 +47,7 @@ These examples show the results of switching models and continuing denoising wit
 <p align="center">
   <a href="fig/trans.pdf"><img src="fig/trans.png" alt="Image examples of cross-model handoff and continued denoising" width="100%"></a>
 </p>
+
 ## Quick start
 
 Trained InstantFusion checkpoints are available on [Hugging Face](https://huggingface.co/XuanlangDai/InstantFusion).
