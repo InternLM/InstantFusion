@@ -1,4 +1,18 @@
 /* Compact chapter spacing; preserve the separate hero composition. */
+.header-actions{display:flex;align-items:center;gap:18px}
+.resource-links{display:flex;align-items:center;gap:8px}
+.resource-links a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;color:var(--blue);border-radius:3px;transition:background .15s}
+.resource-links a:hover{background:#2042cf0a}
+.resource-links a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.resource-links svg{display:block;width:22px;height:22px}
+.huggingface-icon{font:24px/1 "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+@media(max-width:1100px){.site-header nav{gap:20px}.header-actions{gap:0}}
+@media(max-width:760px){
+ .site-header{height:94px;display:grid;grid-template-columns:1fr auto;grid-template-rows:54px 30px;align-content:start}
+ .site-header nav{grid-column:1/-1;grid-row:2;justify-content:space-between;gap:12px;font-size:10px}
+ .header-actions{grid-column:2;grid-row:1}
+ .resource-links{gap:4px}.resource-links a{width:32px;height:32px}
+}
 .site-header nav,.application-jump,.section-meta,.eyebrow,.study-copy>.mono,.method-objectives>div>.mono,.evidence-caption>.mono,.quality-pair>.mono,.reconstruction-index,.image-label,.plate-heading,.plate-note{ text-transform:uppercase }
 .section{padding-top:28px;padding-bottom:36px}
 .section-meta{margin-bottom:24px;padding-top:14px;font-size:12px;letter-spacing:.06em}
