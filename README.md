@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/InternLM/InstantFusion"><img src="https://img.shields.io/badge/Code-Available-2E7D32?style=flat-square&logo=github" alt="Code available"></a>
-  <a href="https://arxiv.org/abs/2610.13944"><img src="https://img.shields.io/badge/Paper-Coming%20soon-9E9E9E?style=flat-square" alt="arxiv">
+  <a href="https://arxiv.org/abs/2610.13944"><img src="https://img.shields.io/badge/Paper-Arxiv-9E9E9E?style=flat-square" alt="arxiv">
   <a href="https://internlm.github.io/InstantFusion/"><img src="https://img.shields.io/badge/Project%20Page-GitHub%20Pages-2441DD?style=flat-square" alt="InstantFusion project page"></a>
   <a href="https://huggingface.co/XuanlangDai/InstantFusion"><img src="https://img.shields.io/badge/Model-Hugging%20Face-2441DD?style=flat-square&logo=huggingface" alt="Model checkpoints on Hugging Face"></a>
 </p>
